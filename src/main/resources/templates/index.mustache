@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>채팅(폴링)</title>
+
+    <style>
+        body{
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        nav a{
+            padding: 8px 15px;
+            margin-right: 10px;
+            background: #666;
+            color: white;
+            text-decoration: none;
+        }
+        .info{
+            color: #666;
+            font-size: 13px;
+        }
+        .chat-area{
+            border: 1px solid #ccc;
+            height: 300px;
+            padding: 10px;
+            overflow-y: scroll;
+            background: #f9f9f9;
+        }
+        .message{
+            padding: 5px 10px;
+            margin: 3px 0;
+            background-color: white;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <a href="/">목록</a>
+        <a href="/save-form">작성</a>
+    </nav>
+
+    <h3>채팅 (폴링)</h3>
+    <p class="info">약 2초마다 화면을 새로고침합니다.</p>
+
+    <div class="chat-area" id="chatArea">
+    {{#chats}}
+        <div class="message">{{msg}}</div>
+    {{/chats}}
+    </div>
+
+    <script>
+        // 최신 메시지가 보이도록 스크롤을 맨 아래로 내린다.
+        const chatArea = document.getElementById("chatArea")
+
+        // 스크롤의 시작높이(scrollTop)를 맨 아래로 설정.(--> scrollHeight가 스크롤의 총 길이(??px)이므로)
+        chatArea.scrollTop = chatArea.scrollHeight
+
+        // 폴링 : 페이지가 열리고 2초 뒤 페이지를 다시 불러온다.
+        setTimeout(() => location.reload() , 2000)
+    </script>
+</body>
+</html>
