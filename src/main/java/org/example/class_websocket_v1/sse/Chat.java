@@ -1,4 +1,4 @@
-package org.example.class_websocket_v1.chat;
+package org.example.class_websocket_v1.sse;
 
 import jakarta.persistence.*;
 import lombok.Builder;
